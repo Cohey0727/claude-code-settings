@@ -84,7 +84,19 @@ EOF
 )"
 ```
 
-### Step 5: Verify
+### Step 5: Stage and Push (if needed)
+
+After committing, check if the current branch has an upstream remote set and if there are unpushed commits:
+
+```bash
+git status -sb
+```
+
+- If the branch has no upstream (`git rev-parse --abbrev-ref @{u}` fails), ask the user if they want to push with `git push -u origin <branch>`.
+- If there are unpushed commits, ask the user if they want to push.
+- Do NOT push automatically without user confirmation.
+
+### Step 6: Verify
 
 Run `git status` after commit to confirm success. Show the user the commit hash and message.
 
