@@ -90,6 +90,7 @@ Run `git status` after commit to confirm success. Show the user the commit hash 
 
 ## Rules
 
+- コミット作業に時間をかけない。差分の確認・メッセージ生成・実行を素早く完了させる
 - NEVER commit files containing secrets (`.env`, API keys, tokens, passwords)
 - NEVER use `git add -A` or `git add .` without user confirmation
 - NEVER amend previous commits unless explicitly asked
