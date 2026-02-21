@@ -56,32 +56,21 @@ Analyze all staged changes to determine:
    - 日本語で書く
    - 40文字以内に収める
 
-3. **Body** (optional) - Additional context if the change is non-trivial
-   - What problem does this solve?
-   - What approach was taken and why?
-
 ### Step 4: Generate and Execute Commit
 
 Format the commit message following conventional commits:
 
 ```
 <type>: <comment> @<branch name>
-
-<optional body>
 ```
 
 Get the current branch name with `git branch --show-current` and append it with `@` prefix.
 
-Execute the commit using a HEREDOC for proper formatting:
+Execute the commit:
 
 ```bash
 BRANCH=$(git branch --show-current)
-git commit -m "$(cat <<EOF
-<type>: <comment> @${BRANCH}
-
-<optional body>
-EOF
-)"
+git commit -m "<type>: <comment> @${BRANCH}"
 ```
 
 ### Step 5: Stage and Push (if needed)
@@ -103,6 +92,7 @@ Run `git status` after commit to confirm success. Show the user the commit hash 
 ## Rules
 
 - コミット作業に時間をかけない。差分の確認・メッセージ生成・実行を素早く完了させる
+- NEVER add a body to the commit message. Subject line only. No exceptions.
 - NEVER commit files containing secrets (`.env`, API keys, tokens, passwords)
 - NEVER use `git add -A` or `git add .` without user confirmation
 - NEVER amend previous commits unless explicitly asked
@@ -119,23 +109,12 @@ Run `git status` after commit to confirm success. Show the user the commit hash 
 feat: パスワードリセットメール機能を追加 @feature/auth
 ```
 
-### Bug fix with body
+### Bug fix
 ```
 fix: 決済プロバイダのnullレスポンスを処理 @fix/payment-webhook
-
-Stripeのwebhookがキャンセルされたサブスクリプションに対してnullを返し、
-コールバックエンドポイントで500エラーが発生していた。
 ```
 
 ### Refactor
 ```
 refactor: クエリビルダーをリポジトリパターンに抽出 @main
-```
-
-### Multiple file types
-```
-feat: ベクトル埋め込みによるセマンティック検索を追加 @feature/search
-
-OpenAIの埋め込み生成とRedisのベクトル類似検索を実装。
-Redis未接続時は部分文字列検索にフォールバックする。
 ```
