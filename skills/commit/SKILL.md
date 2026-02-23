@@ -1,7 +1,6 @@
 ---
 name: commit
 description: ステージ済み・未ステージの変更を分析し、conventional commit形式のメッセージを自動生成してコミットを実行する。ユーザーが「コミット」「変更を保存」と言ったとき、または /commit を実行したときに使用。
-tools: Bash
 disable-model-invocation: true
 ---
 
@@ -88,6 +87,14 @@ git status -sb
 ### Step 6: Verify
 
 Run `git status` after commit to confirm success. Show the user the commit hash and message.
+
+## Language
+
+コミットメッセージの記述言語は、明示的な指定がない限り、そのリポジトリで主として使用されている言語に従う。
+
+- リポジトリの既存コミット履歴（`git log`）やドキュメントから主要言語を判定する
+- 日本語リポジトリなら日本語、英語リポジトリなら英語でコメントを書く
+- ユーザーが言語を指定した場合はその指定に従う
 
 ## Rules
 
