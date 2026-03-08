@@ -1,6 +1,6 @@
 ---
-name: resolve-review
-description: PRのレビューコメントを取得し、修正対応またはコメント返信を行う。PR番号・URLを受け取るか、直前に作成したPRを対象とする。ユーザーが「レビュー対応」「レビュー修正」と言ったとき、または /resolve-review を実行したときに使用。
+name: resolve-reviews
+description: PRのレビューコメントを取得し、修正対応またはコメント返信を行う。PR番号・URLを受け取るか、直前に作成したPRを対象とする。ユーザーが「レビュー対応」「レビュー修正」と言ったとき、または /resolve-reviews を実行したときに使用。
 ---
 
 # Resolve PR Review Comments
@@ -276,7 +276,7 @@ PR URL: <url>
 ### PR番号を指定して実行
 
 ```
-ユーザー: /resolve-review 42
+ユーザー: /resolve-reviews 42
 
 1. gh pr view 42 → PR #42: feat: add user authentication
 2. ブランチ feat/add-user-auth にチェックアウト
@@ -295,7 +295,7 @@ PR URL: <url>
 ### PR URLを指定して実行
 
 ```
-ユーザー: /resolve-review https://github.com/user/repo/pull/42
+ユーザー: /resolve-reviews https://github.com/user/repo/pull/42
 
 → 上記と同じフロー
 ```
@@ -303,7 +303,7 @@ PR URL: <url>
 ### 指定なしで実行
 
 ```
-ユーザー: /resolve-review
+ユーザー: /resolve-reviews
 
 1. 現在のブランチのPRを検索 → PR #42 を発見
 2. 以降同じフロー
@@ -312,7 +312,7 @@ PR URL: <url>
 ### レビューコメントがない場合
 
 ```
-ユーザー: /resolve-review 42
+ユーザー: /resolve-reviews 42
 
 1. gh pr view 42 → PR #42
 2. レビューコメントを取得 → 0件

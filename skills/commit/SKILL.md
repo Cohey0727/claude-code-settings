@@ -40,7 +40,20 @@ If there are no staged changes but there are unstaged changes or untracked files
 
 If there are already staged changes, proceed with those.
 
-### Step 3: Analyze Changes
+### Step 3: Run Lint and Tests (if available)
+
+Before committing, check if the project has lint or test scripts configured (e.g., `package.json`, `Makefile`, etc.). If found, run them to catch issues early:
+
+```bash
+# Examples (run whichever are available)
+npm run lint
+npm run test
+```
+
+- If lint or tests fail, fix the issues before proceeding to commit
+- If the project has no lint/test configuration, skip this step
+
+### Step 4: Analyze Changes
 
 Analyze all staged changes to determine:
 
@@ -55,7 +68,7 @@ Analyze all staged changes to determine:
    - 日本語で書く
    - 40文字以内に収める
 
-### Step 4: Generate and Execute Commit
+### Step 5: Generate and Execute Commit
 
 Format the commit message following conventional commits:
 
@@ -72,7 +85,7 @@ BRANCH=$(git branch --show-current)
 git commit -m "<type>: <comment> @${BRANCH}"
 ```
 
-### Step 5: Stage and Push (if needed)
+### Step 6: Stage and Push (if needed)
 
 After committing, check if the current branch has an upstream remote set and if there are unpushed commits:
 
@@ -84,7 +97,7 @@ git status -sb
 - If there are unpushed commits, ask the user if they want to push.
 - Do NOT push automatically without user confirmation.
 
-### Step 6: Verify
+### Step 7: Verify
 
 Run `git status` after commit to confirm success. Show the user the commit hash and message.
 
